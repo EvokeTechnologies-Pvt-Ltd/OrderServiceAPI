@@ -34,18 +34,9 @@ public class OrderController {
 
    @DeleteMapping("/{id}")
    public ResponseEntity<Void> deleteOrder(@PathVariable String id) {
-       try {
            orderService.deleteOrder(id);
            return ResponseEntity.noContent().build();
-       } catch (Exception e) {
-           return ResponseEntity.status(500).build();
-       }
    }
 
-   //create a method to email validation
-    public boolean validateEmail(String email) {
-         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-         return email.matches(emailRegex);
-    }
 
 }

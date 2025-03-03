@@ -13,14 +13,12 @@ import java.util.Optional;
 @Service
 public class OrderService {
 
+    @Autowired(required=true)
     private RestTemplate restTemplate;
 
-    public OrderService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
 
     public double getCurrentExchangeRate(String currency) {
-        return restTemplate.getForObject("https://api.exchangerate-api.com/v4/latest/USD", Double.class);
+        return restTemplate.getObject("https://api.exchangerate-api.com/v4/latest/USD", Double.class);
     }
 
 
