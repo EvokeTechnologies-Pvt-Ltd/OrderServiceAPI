@@ -16,7 +16,6 @@ public class OrderService {
     @Autowired(required=true)
     private RestTemplate restTemplate;
 
-
     public double getCurrentExchangeRate(String currency) {
         return restTemplate.getObject("https://api.exchangerate-api.com/v4/latest/USD", Double.class);
     }
@@ -29,13 +28,6 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-
-    /**
-     * Retrieves an Order by its ID.
-     *
-     * @param id the ID of the Order to retrieve
-     * @return an Optional containing the Order if found, or an empty Optional if not found
-     */
     public Optional<Order> getOrderById(String id) {
         return orderRepository.findById(id);
     }
